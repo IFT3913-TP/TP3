@@ -7,7 +7,7 @@ d = u-1= 6.00
 s = u +1.5d = 18.00
 i = l-1.5d = -6.00
 NCLOC
-		l = 12.00
+l = 12.00
 m = 71.50
 u = 180.00
 d = u-1 = 168.00
@@ -15,11 +15,20 @@ s = u +1.5d = 432.00
 i = l-1.5d = -240.00
 
 DCP 
-		l = 49.27
+l = 49.27
 m = 59.21
 u= 82.31
 d= u-1 = 33.04
 s= u +1.5d = 131.87
 i= l-1.5d = -0.29 
 
+
+
+Nuage de  points NCLOC en fonction de NoCom
+pearson = 0.7145716586953
+spearman = 0.6880373923593636
+
+Nuage de points DCP en fonction de NoCom
+pearson = -0.487752997457394
+spearman = -0.5335180851612711
 
