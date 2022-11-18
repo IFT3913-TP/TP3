@@ -66,12 +66,12 @@ little_dot = dict(markerfacecolor='r', marker='.', markersize=5)
 
 # NOCom
 # We create a new figure to draw the box plot inside
-fig_NOCOM = plt.figure(1, figsize =(10, 7))
+fig_NOCom = plt.figure(1, figsize =(10, 7))
 # We define an horizontal box plot that is also using the custom marker we defined earlier
-bp_dict_NOCOM = plt.boxplot(data_NOCom, vert=False, flierprops=little_dot)
+bp_dict_NOCom = plt.boxplot(data_NOCom, vert=False, flierprops=little_dot)
 # We add values corresponding to the metrics as text on top of the plot
-draw_text(bp_dict_NOCOM)
-plt.title("Boîte à moustache NOCOM")
+draw_text(bp_dict_NOCom)
+plt.title("Boîte à moustache NOCom")
 plt.draw()
 
 # NCLOC
@@ -91,11 +91,11 @@ plt.draw()
 
 # Draw data visualisation
 # NOCom
-fig_NOCOM_scatter = plt.figure(4, figsize =(10, 7))
+fig_NOCom_scatter = plt.figure(4, figsize =(10, 7))
 # We define a scatter plot using the data set element numbers as x and the data set values as y
 plt.scatter(np.arange(1, data_NOCom.size+1), data_NOCom)
-plt.title("Nuage de points NOCOM")
-plt.ylabel("NOCOM")
+plt.title("Nuage de points NOCom")
+plt.ylabel("NOCom")
 plt.draw()
 
 # NCLOC
@@ -134,7 +134,7 @@ b_DCP = lreg_NOCom_DCP[1]
 
 # Draw data relation
 # NCLOC/NOCom
-fig_NOCOM_NCLOC_scatter = plt.figure(7, figsize =(10, 7))
+fig_NOCom_NCLOC_scatter = plt.figure(7, figsize =(10, 7))
 # We define a scatter plot using values for NOCom as x and values for NCLOC as y
 plt.scatter(data_NOCom, data_NCLOC)
 # We plot the line corresponding to the linear regression
@@ -152,7 +152,7 @@ plt.subplots_adjust(bottom=0.15)
 plt.draw()
 
 # DCP/NOCom
-fig_NOCOM_DCP_scatter = plt.figure(8, figsize =(10, 7))
+fig_NOCom_DCP_scatter = plt.figure(8, figsize =(10, 7))
 plt.scatter(data_NOCom, data_DCP)
 #y2 = a_DCP*data_NOCom+b_DCP
 plt.plot(data_NOCom,a_DCP*data_NOCom+b_DCP, 
