@@ -24,11 +24,14 @@ i= l-1.5d = -0.29 
 
 
 
-Nuage de  points NCLOC en fonction de NoCom
-pearson = 0.7145716586953
+Nuage de  points NCLOC en fonction de NoCom 
+pearson = 0.7145716586953 Nous avons un degré de correlation élevé car le degré se situe entre ±0.50 et ±1
 spearman = 0.6880373923593636
 
+
+
+
 Nuage de points DCP en fonction de NoCom
-pearson = -0.487752997457394
+pearson = -0.487752997457394 Nous avons un degré de correlation modéré car la valeur se retrouve entre ±0.30 et ±0.49
 spearman = -0.5335180851612711
 
