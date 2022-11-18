@@ -1,7 +1,7 @@
 # Import libraries
 import matplotlib.pyplot as plt
 import numpy as np
-import csv
+from csv import DictReader
 from scipy import stats
 
 
@@ -42,7 +42,7 @@ def draw_text(bp_dict):
 # Extracting data from the csv dataset
 with open('jfreechart-stats.csv', newline='') as csvfile:
     # we obtain an iterator to extract the csv data
-    reader = csv.DictReader(csvfile)
+    reader = DictReader(csvfile)
     # initialising the data lists
     data_NOCom = []
     data_NCLOC = []
