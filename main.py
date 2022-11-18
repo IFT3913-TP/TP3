@@ -64,53 +64,116 @@ data_DCP = np.array(data_DCP)
 # We will need a special marker to display the extremes values
 little_dot = dict(markerfacecolor='r', marker='.', markersize=5)
 
-# NOCom
-# We create a new figure to draw the box plot inside
-fig_NOCom = plt.figure(1, figsize =(10, 7))
-# We define an horizontal box plot that is also using the custom marker we defined earlier
-bp_dict_NOCom = plt.boxplot(data_NOCom, vert=False, flierprops=little_dot)
-# We add values corresponding to the metrics as text on top of the plot
-draw_text(bp_dict_NOCom)
-plt.title("Boîte à moustache NOCom")
-plt.draw()
+# NOCom box plot
+# We use this numpy function to obtain the quantiles
+[vmin,l,m,u,vmax] = np.quantile(data_NOCom, [0,0.25,0.5,0.75,1])
 
-# NCLOC
-fig_NCLOC = plt.figure(2, figsize =(10, 7))
-bp_dict_NCLOC= plt.boxplot(data_NCLOC, vert=False, flierprops=little_dot)
-draw_text(bp_dict_NCLOC)
+# We then compute the box plot parameters
+d = u - l
+s = u + 1.5*d
+i = max(u - 1.5*d, vmin)
+
+# We create a new figure to display the box plot
+fig, ax = plt.subplots(figsize=(12,7), label="Boîte à moustache NOCom")
+
+# We define the data structure that will be used to draw the box plot
+boxes = [
+    {
+        'label' : "NOCom",
+        'whislo': i,    # Bottom whisker position
+        'q1'    : l,    # First quartile (25th percentile)
+        'med'   : m,    # Median         (50th percentile)
+        'q3'    : u,    # Third quartile (75th percentile)
+        'whishi': s,    # Top whisker position
+        'fliers': data_NOCom[data_NOCom>s]        # Outliers
+    }
+]
+
+# We declare the box plot, passing the values we computed earlier
+bp_dict = ax.bxp(boxes, showfliers=True, vert=False, flierprops=little_dot)
+
+# We add labels to the box plot elements
+draw_text(bp_dict)
+
+plt.title("Boîte à moustache NOCom")
+# This is required to draw the plot
+plt.draw()
+# We save the plot to a pdf file
+plt.savefig('exports/moustache_NOCom.pdf', bbox_inches='tight')
+
+
+# We do the same thing for NCLOC box plot
+[vmin,l,m,u,vmax] = np.quantile(data_NCLOC, [0,0.25,0.5,0.75,1])
+d = u - l
+s = u + 1.5*d
+i = max(u - 1.5*d, vmin)
+fig, ax = plt.subplots(figsize=(12,7), label="Boîte à moustache NCLOC")
+boxes = [
+    {
+        'label' : "NCLOC",
+        'whislo': i,    # Bottom whisker position
+        'q1'    : l,    # First quartile (25th percentile)
+        'med'   : m,    # Median         (50th percentile)
+        'q3'    : u,    # Third quartile (75th percentile)
+        'whishi': s,    # Top whisker position
+        'fliers': data_NCLOC[data_NCLOC>s]        # Outliers
+    }
+]
+bp_dict = ax.bxp(boxes, showfliers=True, vert=False, flierprops=little_dot)
+draw_text(bp_dict)
 plt.title("Boîte à moustache NCLOC")
 plt.draw()
+plt.savefig('exports/moustache_NCLOC.pdf', bbox_inches='tight')
 
-# DCP
-fig_DCP = plt.figure(3, figsize =(10, 7))
-bp_dict_DCP = plt.boxplot(data_DCP, vert=False, flierprops=little_dot)
-draw_text(bp_dict_DCP)
+# We do the same thing for DCP box plot
+[vmin,l,m,u,vmax] = np.quantile(data_DCP, [0,0.25,0.5,0.75,1])
+d = u - l
+s = u + 1.5*d
+i = max(u - 1.5*d, vmin)
+fig, ax = plt.subplots(figsize=(12,7), label="Boîte à moustache DCP")
+boxes = [
+    {
+        'label' : "DCP",
+        'whislo': i,    # Bottom whisker position
+        'q1'    : l,    # First quartile (25th percentile)
+        'med'   : m,    # Median         (50th percentile)
+        'q3'    : u,    # Third quartile (75th percentile)
+        'whishi': s,    # Top whisker position
+        'fliers': data_DCP[data_DCP>s]         # Outliers
+    }
+]
+bp_dict = ax.bxp(boxes, showfliers=True, vert=False, flierprops=little_dot)
+draw_text(bp_dict)
 plt.title("Boîte à moustache DCP")
 plt.draw()
+plt.savefig('exports/moustache_DCP.pdf', bbox_inches='tight')
 
 
 # Draw data visualisation
 # NOCom
-fig_NOCom_scatter = plt.figure(4, figsize =(10, 7))
+fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points NOCom")
 # We define a scatter plot using the data set element numbers as x and the data set values as y
 plt.scatter(np.arange(1, data_NOCom.size+1), data_NOCom)
 plt.title("Nuage de points NOCom")
 plt.ylabel("NOCom")
 plt.draw()
+plt.savefig('exports/nuage_NOCom.pdf', bbox_inches='tight')
 
 # NCLOC
-fig_NCLOC_scatter = plt.figure(5, figsize =(10, 7))
+fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points NCLOC")
 plt.scatter(np.arange(1, data_NCLOC.size+1), data_NCLOC)
 plt.title("Nuage de points NCLOC")
 plt.ylabel("NCLOC")
 plt.draw()
+plt.savefig('exports/nuage_NCLOC.pdf', bbox_inches='tight')
 
 # DCP
-fig_DCP_scatter = plt.figure(6, figsize =(10, 7))
+fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points DCP")
 plt.scatter(np.arange(1, data_DCP.size+1), data_DCP)
 plt.title("Nuage de points DCP")
 plt.ylabel("DCP")
 plt.draw()
+plt.savefig('exports/nuage_DCP.pdf', bbox_inches='tight')
 
 
 # Correlation and regression compute
@@ -134,7 +197,7 @@ b_DCP = lreg_NOCom_DCP[1]
 
 # Draw data relation
 # NCLOC/NOCom
-fig_NOCom_NCLOC_scatter = plt.figure(7, figsize =(10, 7))
+fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points NCLOC en fonction de NOCom")
 # We define a scatter plot using values for NOCom as x and values for NCLOC as y
 plt.scatter(data_NOCom, data_NCLOC)
 # We plot the line corresponding to the linear regression
@@ -150,11 +213,11 @@ plt.gcf().text(0.125, 0.045, "pearson = " + str(pearson_NOCom_NCLOC[0]), fontsiz
 plt.gcf().text(0.125, 0.02, "spearman = " + str(spearman_NOCom_NCLOC[0]), fontsize=12)
 plt.subplots_adjust(bottom=0.15)
 plt.draw()
+plt.savefig('exports/relation_NCLOC_NOCom.pdf', bbox_inches='tight')
 
 # DCP/NOCom
-fig_NOCom_DCP_scatter = plt.figure(8, figsize =(10, 7))
+fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points DCP en fonction de NOCom")
 plt.scatter(data_NOCom, data_DCP)
-#y2 = a_DCP*data_NOCom+b_DCP
 plt.plot(data_NOCom,a_DCP*data_NOCom+b_DCP, 
         label="Régression linéaire : y = "+str(a_DCP)+"x + "+str(b_DCP), 
         color="red")
@@ -166,7 +229,7 @@ plt.gcf().text(0.125, 0.045, "pearson = " + str(pearson_NOCom_DCP[0]), fontsize=
 plt.gcf().text(0.125, 0.02, "spearman = " + str(spearman_NOCom_DCP[0]), fontsize=12)
 plt.subplots_adjust(bottom=0.15)
 plt.draw()
-
+plt.savefig('exports/relation_DCP_NOCom.pdf', bbox_inches='tight')
 
 # We show all the figures we created
 plt.show()
