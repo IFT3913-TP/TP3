@@ -10,5 +10,6 @@ Prérequis:
       - SciPy
       - Tkinter
 
-
 Pour visualiser les graphiques il suffit de lancer le script python avec la commande python main.py
+
+Les diagrammes générés seront également sauvegardés automatiquement dans le dossier exports au format pdf.

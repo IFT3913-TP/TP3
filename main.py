@@ -74,7 +74,7 @@ s = u + 1.5*d
 i = max(u - 1.5*d, vmin)
 
 # We create a new figure to display the box plot
-fig, ax = plt.subplots(figsize=(12,7), label="Boîte à moustache NOCom")
+fig, ax = plt.subplots(figsize=(15,3), label="Boîte à moustache NOCom")
 
 # We define the data structure that will be used to draw the box plot
 boxes = [
@@ -95,6 +95,16 @@ bp_dict = ax.bxp(boxes, showfliers=True, vert=False, flierprops=little_dot)
 # We add labels to the box plot elements
 draw_text(bp_dict)
 
+# We add to the right of the plot the values used to draw the box plot 
+plt.gcf().text(0.835, 0.75, "quartile supérieur = " + str(u), fontsize=10)
+plt.gcf().text(0.835, 0.7, "quartile inférieur = " + str(l), fontsize=10)
+plt.gcf().text(0.835, 0.65, "longueur de la boîte = " + str(d), fontsize=10)
+plt.gcf().text(0.835, 0.6, "limite supérieure = " + str(s), fontsize=10)
+plt.gcf().text(0.835, 0.55, "limite inférieure = " + str(i), fontsize=10)
+
+# We must adjust the size of the plot in order to make room for the text on the right
+plt.subplots_adjust(bottom=0.17, right=0.825)
+
 plt.title("Boîte à moustache NOCom")
 # This is required to draw the plot
 plt.draw()
@@ -107,7 +117,7 @@ plt.savefig('exports/moustache_NOCom.pdf', bbox_inches='tight')
 d = u - l
 s = u + 1.5*d
 i = max(u - 1.5*d, vmin)
-fig, ax = plt.subplots(figsize=(12,7), label="Boîte à moustache NCLOC")
+fig, ax = plt.subplots(figsize=(15,3), label="Boîte à moustache NCLOC")
 boxes = [
     {
         'label' : "NCLOC",
@@ -122,6 +132,12 @@ boxes = [
 bp_dict = ax.bxp(boxes, showfliers=True, vert=False, flierprops=little_dot)
 draw_text(bp_dict)
 plt.title("Boîte à moustache NCLOC")
+plt.gcf().text(0.835, 0.75, "quartile supérieur = " + str(u), fontsize=10)
+plt.gcf().text(0.835, 0.7, "quartile inférieur = " + str(l), fontsize=10)
+plt.gcf().text(0.835, 0.65, "longueur de la boîte = " + str(d), fontsize=10)
+plt.gcf().text(0.835, 0.6, "limite supérieure = " + str(s), fontsize=10)
+plt.gcf().text(0.835, 0.55, "limite inférieure = " + str(i), fontsize=10)
+plt.subplots_adjust(bottom=0.17, right=0.825)
 plt.draw()
 plt.savefig('exports/moustache_NCLOC.pdf', bbox_inches='tight')
 
@@ -130,7 +146,7 @@ plt.savefig('exports/moustache_NCLOC.pdf', bbox_inches='tight')
 d = u - l
 s = u + 1.5*d
 i = max(u - 1.5*d, vmin)
-fig, ax = plt.subplots(figsize=(12,7), label="Boîte à moustache DCP")
+fig, ax = plt.subplots(figsize=(15,3), label="Boîte à moustache DCP")
 boxes = [
     {
         'label' : "DCP",
@@ -145,13 +161,19 @@ boxes = [
 bp_dict = ax.bxp(boxes, showfliers=True, vert=False, flierprops=little_dot)
 draw_text(bp_dict)
 plt.title("Boîte à moustache DCP")
+plt.gcf().text(0.835, 0.75, "quartile supérieur = " + str(u), fontsize=10)
+plt.gcf().text(0.835, 0.7, "quartile inférieur = " + str(l), fontsize=10)
+plt.gcf().text(0.835, 0.65, "longueur de la boîte = " + str(d), fontsize=10)
+plt.gcf().text(0.835, 0.6, "limite supérieure = " + str(s), fontsize=10)
+plt.gcf().text(0.835, 0.55, "limite inférieure = " + str(i), fontsize=10)
+plt.subplots_adjust(bottom=0.17, right=0.825)
 plt.draw()
 plt.savefig('exports/moustache_DCP.pdf', bbox_inches='tight')
 
 
 # Draw data visualisation
 # NOCom
-fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points NOCom")
+fig, ax = plt.subplots(figsize=(15,7), label="Nuage de points NOCom")
 # We define a scatter plot using the data set element numbers as x and the data set values as y
 plt.scatter(np.arange(1, data_NOCom.size+1), data_NOCom)
 plt.title("Nuage de points NOCom")
@@ -160,7 +182,7 @@ plt.draw()
 plt.savefig('exports/nuage_NOCom.pdf', bbox_inches='tight')
 
 # NCLOC
-fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points NCLOC")
+fig, ax = plt.subplots(figsize=(15,7), label="Nuage de points NCLOC")
 plt.scatter(np.arange(1, data_NCLOC.size+1), data_NCLOC)
 plt.title("Nuage de points NCLOC")
 plt.ylabel("NCLOC")
@@ -168,7 +190,7 @@ plt.draw()
 plt.savefig('exports/nuage_NCLOC.pdf', bbox_inches='tight')
 
 # DCP
-fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points DCP")
+fig, ax = plt.subplots(figsize=(15,7), label="Nuage de points DCP")
 plt.scatter(np.arange(1, data_DCP.size+1), data_DCP)
 plt.title("Nuage de points DCP")
 plt.ylabel("DCP")
@@ -197,7 +219,7 @@ b_DCP = lreg_NOCom_DCP[1]
 
 # Draw data relation
 # NCLOC/NOCom
-fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points NCLOC en fonction de NOCom")
+fig, ax = plt.subplots(figsize=(15,7), label="Nuage de points NCLOC en fonction de NOCom")
 # We define a scatter plot using values for NOCom as x and values for NCLOC as y
 plt.scatter(data_NOCom, data_NCLOC)
 # We plot the line corresponding to the linear regression
@@ -216,7 +238,7 @@ plt.draw()
 plt.savefig('exports/relation_NCLOC_NOCom.pdf', bbox_inches='tight')
 
 # DCP/NOCom
-fig, ax = plt.subplots(figsize=(12,7), label="Nuage de points DCP en fonction de NOCom")
+fig, ax = plt.subplots(figsize=(15,7), label="Nuage de points DCP en fonction de NOCom")
 plt.scatter(data_NOCom, data_DCP)
 plt.plot(data_NOCom,a_DCP*data_NOCom+b_DCP, 
         label="Régression linéaire : y = "+str(a_DCP)+"x + "+str(b_DCP), 
