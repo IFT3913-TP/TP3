@@ -13,3 +13,5 @@ Prérequis:
 Pour visualiser les graphiques il suffit de lancer le script python avec la commande python main.py
 
 Les diagrammes générés seront également sauvegardés automatiquement dans le dossier exports au format pdf.
+
+Le rapport au format pdf ainsi que son code source en latex se trouvent dans le dossier rapport/
