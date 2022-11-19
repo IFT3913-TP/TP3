@@ -115,4 +115,22 @@ Nous ne pouvons pas être certains que le nombre de commits a réellement un imp
 En fonction de la complexité de la tâche réalisée par les logiciels ou du langage dans lequel ils sont écrits, il se peut qu'une faible ou une grande quantité de commentaire soit nécessaire afin d'avoir un bon niveau de compréhension et de maintenabilité de la classe et donc suivant les cas sélectionnés pour l'étude, il se peut qu'il ne soit pas possible de généralisé la conclusion à l'ensemble des projets logiciels et/ou des langages de programmation.
 \subsection{Validité de conclusion}
 Comme décrit lors de la section sur la validité interne, nous ne pouvons être certains que le nombre de commits est bien responsable de la modification de la densité de commentaire d'une classe. Il sera donc possible de tirer des conclusions fausses de cette étude.
+\subsection{Mise en application sur le cas de jfreechart}
+
+
+La relation trouvée lors de l'étude de corrélations nous laisse penser que l'hypothèse est fausse. En effet, d'après le coefficient de Spearman négatif et au vu de l'équation pour lequel le coefficient directeur est aussi négatif, on est face à une relation linéaire négative et donc c'est plutôt l'inverse de l'hypothèse qui pourrait se vérifier.
+
+
+Mettons néanmoins en œuvre une partie du protocole décrit précédemment. Nous trions les données issues du csv par ordre croissant de commits puis nous calculons la médiane de la métrique DCP sur le groupe constitué des classes avec 10 commits ou moins ainsi que celle sur le groupe 11 commits ou plus. On obtient dans le premier cas 63,035 et dans le second cas 47,58. Ces résultats contredisent l'hypothèse de départ et vérifient bien ce qu'il pourrait exister la relation inverse.
+
+
+
+\subsection{Conclusion}
+
+
+Nous pouvons donc conclure plusieurs choses, soit l'hypothèse est tout simplement fausse, soit l'expérience en raison des critères décrits lors de l'étude de validité ne permet pas de tirer une conclusion concernant cette hypothèse. D'autre part, nous pouvons également dégager la nouvelle hypothèse suivante : << les classes qui ont été modifiées moins de 10 fois sont mieux commentées que celles qui ont été modifiées plus de 10 fois >>.
+
+
+
+
 \end{document}
